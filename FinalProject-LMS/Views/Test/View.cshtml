@@ -1,0 +1,28 @@
+﻿@model List<FinalProject_LMS.VMQ.DetailVMQ>
+@{
+    ViewBag.Title = "View";
+}
+<h2>Quiz Summary</h2>
+
+<div class="jumbotron">
+    
+    <table class="table">
+        <tr>
+            <th>Question</th>
+            <th>Your Answer</th>
+            <th>Right Answer</th>
+        </tr>
+        @foreach (var lst in Model) { 
+        <tr>
+            <td>@lst.Questions</td>
+            <td>@lst.Answer2</td>
+            <td>@lst.Answer</td>
+        </tr>
+        }
+    </table>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/coursenamevalidations")
+    @Scripts.Render("~/bundles/message")
+}

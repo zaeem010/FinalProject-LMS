@@ -1,0 +1,46 @@
+﻿@model FinalProject_LMS.ViewModels.TestVM
+@{
+    ViewBag.Title = "ProceedTest";
+    //int sr = 0;
+}
+<div class=" jumbotron">
+    <h2>Quiz Sheet</h2>
+
+    @using (Html.BeginForm("ProceedTest", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p>(@Model.Count / @Model.CountDb)</p>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Question: &nbsp;&nbsp;@Model.QuizChildList.Questions</h4>
+                <input type="hidden" name="Que" value="@Model.QuizChildList.Questions" />
+            </div>
+            <div class="col-md-5">
+                True <input type="radio" name="Ans" value="True" />
+                False <input type="radio" name="Ans" value="False" />
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Next" class="col-md-4 btn btn-primary" />
+            </div>
+        </div>
+        <input type="hidden" name="count" value="@Model.Count" />
+        <input type="hidden" name="Quizid" value="@Model.Quizid" />
+        <input type="hidden" name="minid" value="@Model.minid" />
+        @Html.HiddenFor(m => m.Test.Quizid)
+        @Html.HiddenFor(m => m.Test.Courseid)
+        @Html.HiddenFor(m => m.Test.Testid)
+        @Html.HiddenFor(m => m.Test.StdName)
+    }
+    <div>
+        <a href="@Url.Action("Test","Test")">Go Back</a>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/coursenamevalidations")
+    @Scripts.Render("~/bundles/message")
+}

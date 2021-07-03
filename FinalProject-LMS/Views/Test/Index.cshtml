@@ -1,0 +1,29 @@
+﻿@model List<FinalProject_LMS.VMQ.AllSummaryVMQ>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>All Quiz</h2>
+<div class="jumbotron">
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Quiz Name</th>
+            <th>Course Name</th>
+            <th>Student Name</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var lst in Model) 
+        {
+        <tr>
+            <td>@lst.Testid</td>
+            <td>@lst.QuizName</td>
+            <td>@lst.CourseName</td>
+            <td>@lst.StdName</td>
+            <td>
+                <a href="@Url.Action("View", new { testid = lst.Testid })" class="btn btn-primary">View</a>
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>

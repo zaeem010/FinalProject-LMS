@@ -1,0 +1,34 @@
+﻿@model List<FinalProject_LMS.VMQ.QuizVMQ>
+@{
+    ViewBag.Title = "Index";
+}
+<div class=" jumbotron">
+    @if (User.IsInRole("Teacher"))
+    {
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>}
+<br />
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Quiz Name</th>
+        <th>Course Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var lst in Model) 
+    {
+<tr>
+    <td>@lst.Quizid</td>
+    <td>@lst.QuizName</td>
+    <td>@lst.CourseName</td>
+    <td style="width:30px; text-align:center;"><a href="@Url.Action("Edit", new { id = lst.Quizid })" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Click Me To Edit">Edit</a></td>
+</tr>
+    }
+</table>    
+    
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/message")
+}

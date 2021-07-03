@@ -1,0 +1,33 @@
+﻿@model FinalProject_LMS.ViewModels.SummaryVM
+@{
+    ViewBag.Title = "Summary";
+}
+<h2>Quiz Summary</h2>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Quiz Name : <b>@Model.SummaryVMQ.QuizName</b> </h4>
+        </div>
+        <div class="col-md-4">
+            <h4>Course Name : <b>@Model.SummaryVMQ.CourseName</b> </h4>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Total</th>
+            <th>Correct</th>
+            <th>Wrong</th>
+        </tr>
+        <tr>
+            <td>@Model.tot</td>
+            <td>@Model.cor</td>
+            <td>@Model.worng</td>
+        </tr>
+    </table>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/coursenamevalidations")
+    @Scripts.Render("~/bundles/message")
+}
